@@ -126,7 +126,7 @@ const home = {
   body: `
 <section class="hero">
   <div class="hero-media" style="background-image:url(${site.lqip.hero})">
-    <img src="${site.img.hero}" srcset="${site.img.hero.srcset}" sizes="100vw" width="${site.img.hero.w}" height="${site.img.hero.h}" alt="Pikap merah di dalam bengkel" fetchpriority="high">
+    <img src="${site.img.hero}" srcset="${site.img.hero.srcset}" sizes="100vw" width="${site.img.hero.w}" height="${site.img.hero.h}" alt="${site.alt.hero}" fetchpriority="high">
   </div>
   <div class="hero-in wrap">
     <h1 class="hero-h1">

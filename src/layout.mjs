@@ -141,7 +141,11 @@ export const page = ({ key, path, title, description, body, ld = [], preload = n
 <meta name="twitter:card" content="summary_large_image">
 ${site.url ? `<link rel="canonical" href="${site.url}${path}">
 <meta property="og:url" content="${site.url}${path}">
-<meta property="og:image" content="${site.url}${site.img.hero}">
+<meta property="og:image" content="${site.url}/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="${site.brand}: bengkel kenderaan berat dan ringan di ${site.address.city}, ${site.address.state}">
+<meta name="twitter:image" content="${site.url}/og.jpg">
 ` : ''}
 <script>
 (function(){var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');try{if(sessionStorage.getItem('mt')){d.classList.add('curtain-on');sessionStorage.removeItem('mt')}}catch(e){}})();

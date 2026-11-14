@@ -17,11 +17,18 @@ const pic = (id, widths, ratio, q = 68, aspect = 2 / 3) => {
   return { src: files[files.length - 1].local, srcset: files.map((f) => `${f.local} ${f.w}w`).join(', '), w: top, h: Math.round(top * (ratio || aspect)), toString() { return this.src; } };
 };
 const thumb = (id) => pic(id, [220, 420], 0.75, 62);
+// Photos processed locally by process-photos.py (not fetched): same shape as pic().
+const localPic = (name, widths, ratio, q, aspect = 1) => {
+  const files = widths.map((w) => ({ local: `/assets/img/${name}-${w}${ratio ? `x${Math.round(w * ratio)}` : ''}-q${q}.webp`, w }));
+  const top = widths[widths.length - 1];
+  return { src: files[files.length - 1].local, srcset: files.map((f) => `${f.local} ${f.w}w`).join(', '), w: top, h: Math.round(top * (ratio || aspect)), toString() { return this.src; } };
+};
 
 export const site = {
   // Live domain, e.g. 'https://mautomobile.my' (no trailing slash). Unknown for now.
   // When set: canonical, og:url, og:image, BreadcrumbList, sitemap.xml and the robots.txt sitemap line are generated.
-  url: null,
+  // Cloudflare address for now; change to the real domain when it exists.
+  url: 'https://m-automobile-mockup.mnifanmohdariff.workers.dev',
   name: 'M Automobile Service Sdn. Bhd.',
   brand: 'M Automobile Service',
   short: 'M Automobile',
@@ -66,21 +73,21 @@ export const site = {
   landmark: null,
 
   img: {
-    // Portrait photo (960x1340). Files were softened (slight blur) and re-encoded at q55 to cut ~70%;
-    // it sits under a dark overlay so the blur is not visible. Re-fetching would undo that.
-    hero: pic('photo-1706741843463-11efe018ea1b', [640, 960, 1280, 1600, 1920], 0, 42, 1340 / 960),
-    heavy: pic('photo-1760944016312-93ac6f9402fe', [480, 800, 1200], 0.75, 55),
-    light: pic('photo-1767681092416-bccf9410bda4', [480, 800, 1200], 0.75, 55),
+    // Malaysian photos (Pexels, Ipoh, Perak); see process-photos.py for sources and processing.
+    hero: localPic('pexels-37154110', [640, 960, 1280, 1600, 1920], 0, 74, 1),
+    heavy: localPic('pexels-37186960', [480, 800, 1200], 0.75, 60),
+    light: localPic('pexels-29874357', [480, 800, 1200], 0.75, 60),
   },
   // Tiny blurred previews (about 240 bytes) painted behind each hero photo until it arrives.
   lqip: {
-    hero: 'data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQBQCdASoUABwAPu1irE4ppaSiKA1RMB2JYwC06EXpTO6NJ8d7NLFfQMQa9Wc0SqwQAP72hiYuWBhJK02oCjhi+qh7Si0A1yOjruKly0kcjOeqBXo8sGPPGKpyeWd3Q4qqlGxZgyLWNCFyJNDd8fptbNQjzbRhO5VPC1zIkLxcwAicb0KOGUxqAAA=',
-    heavy: 'data:image/webp;base64,UklGRpIAAABXRUJQVlA4IIYAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JbACdABdX3/k2Q8iJ/I4ewADht5nKc9lYvUezIGM7kfB4sQ/1T6wT3cR0K3lIo8QRhz90gPbyzZaztZk36GhAfbyAhPUAxw/0P4BpP/2+HMWkkQpW8+6qUe07pMhcRgXae/fft/Hb/brSyzAAAA==',
-    light: 'data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAAAQBACdASoUAA8APu1iqU2ppaOiMAgBMB2JZQDHFExCq+hKRpmA/82pAAD+Cl7LJUjMZmsl6OUNnQU4ZpITbh0zMRqL+W8XIwxSlLTsjbphoKeWK+rPJESvPmiWe8JcR9052KmaMKmFEeRE6VE35w/dbTiM7ubdcsE2aiNOORb81KeqNgBTJLObLf7IzQSz+AA=',
+    hero: 'data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAADwBACdASoUABQAPu1ur1KppiQiqAgBMB2JaQAALq8Y9qXxex/7LicjMxc1FiyeuAAA/udmR1rz4d547ee8tAzyhbZqojmLEWoW7Xdm91JpogKVOJ/XLSjhMg+Gg6t+2U/xatGO4042ubu2MccIs3ghRw7aTYNvRUdK6aIu5D/+2G1dWc1W1T7gKd8SgYnpaOhC7XH72wAAAA==',
+    heavy: 'data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQAwCdASoUAA8APu1iqU2ppaOiMAgBMB2JaQAAL0+j0rYLwAD+2tYxmK2hjrYdTGD1ypvpJrrszfUFwLLoTII5rxXtc/xDyWTJRGsmM8a3kuGZ33qToezEmhGh3NUfLrpmoJeHeqLjGgqWAD/pSaGnZA8BsJJEtMCbVYMAAAA=',
+    light: 'data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBACdASoUAA8APu1iqU2ppaOiMAgBMB2JaQAAXpKE1/FwJzCSpNbxVAAA/r2SGMbLtIVvATAXrq9+flLGPZLl1u0GEgrlRWmUGutQ5JuKeE13LVYVHY8OANaFOicwPE46wY5cmtgE5DPCzPoQCxHwXQx5IAWbtp42Wv972XMyegAA',
   },
   alt: {
-    heavy: 'Lori kepala merah dengan mekanik mencangkung di sebelah tayar',
-    light: 'Tiga kereta dengan bonet terbuka di dalam bengkel, satu di atas lif',
+    hero: 'Lori prime mover di pelabuhan kontena di Ipoh, dengan pantulan dalam lopak air',
+    heavy: 'Lori kontena berplat KA di halaman kontena di Ipoh',
+    light: 'Kereta MPV di atas lif dalam bengkel kereta di Ipoh',
   },
 
   categories: {

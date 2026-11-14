@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://m-automobile-mockup.mnifanmohdariff.workers.dev/sitemap.xml

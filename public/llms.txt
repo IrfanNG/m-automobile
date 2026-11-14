@@ -26,12 +26,12 @@
 - Elektrikal: Pendawaian, bateri dan lampu
 
 ## Halaman
-- [Servis](/services/): Servis berkala, scan enjin, overhaul, brek, absorber, alignment dan elektrikal untuk lori, treler, kereta, van dan pikap di Machang, Kelantan.
-- [Kenderaan Berat](/services/heavy-vehicles/): Lori, Treler, Kenderaan komersial (atas 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
-- [Kenderaan Ringan](/services/light-vehicles/): Kereta, Van, Pikap (bawah 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
-- [Pelanggan](/clients/): Bengkel di Machang untuk kenderaan jabatan kerajaan dan syarikat. Terima LO, dengan sebut harga, invois, delivery order dan akaun syarikat.
-- [Lokasi](/contact/): Bengkel M Automobile di Lot 1306, Kampung Kemuning, 18500 Machang, Kelantan. Telefon atau WhatsApp 013-207 8119. Peta dan arah ke bengkel.
-- [Soalan Lazim](/faq/): Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan dan kerja jabatan kerajaan di M Automobile, Machang.
+- [Servis](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/): Servis berkala, scan enjin, overhaul, brek, absorber, alignment dan elektrikal untuk lori, treler, kereta, van dan pikap di Machang, Kelantan.
+- [Kenderaan Berat](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/heavy-vehicles/): Lori, Treler, Kenderaan komersial (atas 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
+- [Kenderaan Ringan](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/light-vehicles/): Kereta, Van, Pikap (bawah 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
+- [Pelanggan](https://m-automobile-mockup.mnifanmohdariff.workers.dev/clients/): Bengkel di Machang untuk kenderaan jabatan kerajaan dan syarikat. Terima LO, dengan sebut harga, invois, delivery order dan akaun syarikat.
+- [Lokasi](https://m-automobile-mockup.mnifanmohdariff.workers.dev/contact/): Bengkel M Automobile di Lot 1306, Kampung Kemuning, 18500 Machang, Kelantan. Telefon atau WhatsApp 013-207 8119. Peta dan arah ke bengkel.
+- [Soalan Lazim](https://m-automobile-mockup.mnifanmohdariff.workers.dev/faq/): Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan dan kerja jabatan kerajaan di M Automobile, Machang.
 
 ## Soalan lazim
 ### Berapa kos servis atau pembaikan?
