@@ -6,14 +6,22 @@ const tel = site.phones[0];
 const telBtn = (cls = 'btn btn-line') => `<a class="${cls}" href="tel:${tel.tel}">${tel.display}</a>`;
 
 /* ---------- shared blocks ---------- */
+// One client: official logo file, or a styled wordmark when the business has no logo online.
+const clientMark = (c) => c.logo
+  ? `<img src="${c.logo.src}" width="${c.logo.w}" height="${c.logo.h}" alt="${c.name}" loading="lazy">`
+  : `<b class="wm wm-${c.font}" style="color:${c.color}">${c.name}</b>`;
+
 const marquee = () => {
-  const row = (list, dup) => list.map((c) => `<span class="mq-i${c.mono ? ' mono' : ''}${dup ? ' mq-dup' : ''}"${dup ? ' aria-hidden="true"' : ''}><b>${c.name}</b>${c.sub ? `<small>${c.sub}</small>` : ''}</span>`).join('');
+  // The list is repeated so one half of the track is wider than any screen; the second half is the seamless loop copy.
+  const half = [...site.clients, ...site.clients];
+  const row = (dup) => half.map((c, i) => `<span class="mq-i mq-logo"${dup || i >= site.clients.length ? ' aria-hidden="true"' : ''}>${clientMark(c)}</span>`).join('');
   return `
-  <div class="marquee" aria-label="Senarai pelanggan">
-    <div class="mq-row"><div class="mq-track">${row(site.clients.gov)}${row(site.clients.gov, true)}</div></div>
-    <div class="mq-row mq-rev"><div class="mq-track">${row(site.clients.biz)}${row(site.clients.biz, true)}</div></div>
+  <div class="marquee" aria-label="Pelanggan syarikat">
+    <div class="mq-row"><div class="mq-track">${row(false)}${row(true)}</div></div>
   </div>`;
 };
+
+const pdfBtn = (cls = 'btn btn-ink') => `<a class="${cls}" href="${site.profilePdf.href}" download data-pdf>Muat turun profil syarikat <small>PDF · ${site.profilePdf.size}</small></a>`;
 
 const jobsList = () => `
   <ol class="jobs" aria-label="Kerja yang kami buat">
@@ -97,7 +105,7 @@ const faqSection = ({ ids, search = false, heading = 'Soalan Lazim', lede = '', 
         <${h} data-split>${heading}</${h}>
         ${lede ? `<p class="lede" data-reveal>${lede}</p>` : ''}
       </div>
-      ${search ? `<label class="search" data-reveal><span class="sr">Cari soalan</span><input type="search" id="faq-q" placeholder="Cari, cth. kos, slot, lori, LO"></label>` : ''}
+      ${search ? `<label class="search" data-reveal><span class="sr">Cari soalan</span><input type="search" id="faq-q" placeholder="Cari, cth. kos, slot, lori, MOF"></label>` : ''}
     </div>
     ${search ? `<p class="faq-count muted" id="faq-count" aria-live="polite"></p>` : ''}
     <div class="faq" id="faq">${faqList(ids)}
@@ -151,8 +159,12 @@ const home = {
       <li data-reveal><b>${site.regYear}</b><span>Berdaftar sebagai Sdn. Bhd.<br><small>${site.reg}</small></span></li>
       <li data-reveal><b>Berat</b><span>${site.categories.heavy.tonnage}<br><small>${site.categories.heavy.types.join(', ')}</small></span></li>
       <li data-reveal><b>Ringan</b><span>${site.categories.light.tonnage}<br><small>${site.categories.light.types.join(', ')}</small></span></li>
-      <li data-reveal><b>LO</b><span>Terima Pesanan Tempatan<br><small>Jabatan dan agensi kerajaan</small></span></li>
+      <li data-reveal><b>MOF</b><span>Memiliki lesen ePerolehan<br><small>Untuk jabatan kerajaan</small></span></li>
     </ul>
+    <div class="row about-row" data-reveal>
+      <a class="link" href="/about/">Tentang syarikat</a>
+      ${pdfBtn('btn btn-line-dk btn-sm')}
+    </div>
   </div>
 </section>
 
@@ -171,12 +183,12 @@ const home = {
 
 <section class="sec sec-cream sec-clients" id="pelanggan">
   <div class="wrap center">
-    <h2 data-split>Bengkel untuk Jabatan Kerajaan dan Syarikat</h2>
-    <p class="lede" data-reveal>Jabatan kerajaan, syarikat logistik dan perniagaan tempatan yang menghantar kenderaan ke bengkel ini.</p>
+    <h2 data-split>Dipercayai Syarikat Logistik dan Perniagaan Tempatan</h2>
+    <p class="lede" data-reveal>Syarikat kurier dan perniagaan tempatan yang menghantar kenderaan mereka ke bengkel ini.</p>
   </div>
   ${marquee()}
   <div class="wrap center">
-    <a class="link" href="/clients/">Kerja jabatan dan akaun syarikat</a>
+    <a class="link" href="/clients/">Akaun syarikat dan kerja jabatan</a>
   </div>
   ${site.google ? `<figure class="review wrap center" data-reveal>
     <p class="review-stars" aria-label="${site.google.rating} bintang di Google"><span aria-hidden="true">★★★★★</span> ${site.google.rating} di Google · ${site.google.count} ulasan</p>
@@ -213,9 +225,9 @@ const services = {
   key: 'services',
   name: 'Servis',
   preload: { ...site.img.heavy, sizes: '(max-width: 760px) 100vw, 50vw' },
-  ld: [faqLd(['kenderaan', 'scan', 'enjin', 'gambar', 'tempoh'])],
+  ld: [faqLd(['kenderaan', 'scan', 'enjin', 'cat', 'gambar', 'tempoh'])],
   title: `Servis Kenderaan Berat &amp; Ringan di ${city} | ${site.short}`,
-  description: `Servis berkala, scan enjin, overhaul, brek, absorber, alignment dan elektrikal untuk lori, treler, kereta, van dan pikap di ${city}, ${state}.`,
+  description: `Servis berkala, scan enjin, overhaul, brek, alignment, elektrikal, cat dan body work untuk lori, treler, kereta, van dan pikap di ${city}, ${state}.`,
   body: `
 ${phero({
   crumbs: [['Servis']],
@@ -237,7 +249,7 @@ ${phero({
 <section class="sec sec-cream">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-split>Servis, Overhaul, Brek dan Elektrikal</h2>
+      <h2 data-split>Servis, Overhaul, Brek, Cat dan Body Work</h2>
       <p class="lede" data-reveal>Semua kerja di bawah dibuat untuk kenderaan berat dan ringan. Scan komputer dibuat dulu untuk cari punca masalah, kemudian sebut harga diberi sebelum pembaikan dimulakan.</p>
     </div>
     ${jobsList()}
@@ -245,7 +257,7 @@ ${phero({
   </div>
 </section>
 
-${faqSection({ ids: ['kenderaan', 'scan', 'enjin', 'gambar', 'tempoh'], heading: `Soalan Lazim Servis Kenderaan di ${city}`, more: true, tone: '' })}
+${faqSection({ ids: ['kenderaan', 'scan', 'enjin', 'cat', 'gambar', 'tempoh'], heading: `Soalan Lazim Servis Kenderaan di ${city}`, more: true, tone: '' })}
 `,
 };
 
@@ -320,54 +332,38 @@ ${faqSection({ ids: faqIds, heading: `Soalan Lazim Servis ${c.short}`, more: tru
 };
 
 /* ---------- /clients/ ---------- */
-const clientList = (list) => `<ul class="clist">${list.map((c) => `<li data-reveal><b>${c.name}</b>${c.sub ? `<small>${c.sub}</small>` : ''}</li>`).join('')}</ul>`;
+const clientFaq = ['mof', 'agensi', 'dokumen-jabatan', 'armada', 'persendirian'];
 
 const clients = {
   path: '/clients/',
   key: 'clients',
   name: 'Pelanggan',
-  title: `Bengkel Kenderaan Jabatan (LO) &amp; Syarikat | ${site.short}`,
-  description: `Bengkel di ${city} untuk kenderaan jabatan kerajaan dan syarikat. Terima LO, dengan sebut harga, invois, delivery order dan akaun syarikat.`,
-  ld: [faqLd(['agensi', 'dokumen-jabatan', 'armada', 'persendirian'])],
+  title: `Bengkel Kenderaan Syarikat &amp; Jabatan (MOF) | ${site.short}`,
+  description: `Bengkel di ${city} untuk kenderaan syarikat dan jabatan kerajaan. Berdaftar MOF dengan lesen ePerolehan, akaun syarikat, sebut harga, invois dan delivery order.`,
+  ld: [faqLd(clientFaq)],
   body: `
 ${phero({
   crumbs: [['Pelanggan']],
   h1: `Pelanggan Bengkel ${site.short}, ${city}`,
-  sub: 'Jabatan kerajaan, syarikat logistik dan perniagaan tempatan menghantar kenderaan mereka ke bengkel ini. Kami juga terima pemilik persendirian.',
-  cta: waBtn('WhatsApp Bengkel'),
+  sub: 'Syarikat kurier, logistik dan perniagaan tempatan menghantar kenderaan mereka ke bengkel ini. Kami juga terima kerja jabatan kerajaan dan pemilik persendirian.',
+  cta: `${waBtn('WhatsApp Bengkel')} ${pdfBtn('btn btn-line')}`,
 })}
 
 <section class="sec">
   <div class="wrap">
-    <div class="split">
-      <div>
-        <h2 data-split>Jabatan dan Agensi Kerajaan</h2>
-        ${clientList(site.clients.gov)}
-      </div>
-      <div>
-        <h2 data-split>Syarikat dan Perniagaan</h2>
-        ${clientList(site.clients.biz)}
-      </div>
+    <div class="sec-head">
+      <h2 data-split>Syarikat dan Perniagaan</h2>
     </div>
+    <ul class="logos">${site.clients.map((c) => `<li data-reveal>${clientMark(c)}</li>`).join('')}</ul>
   </div>
 </section>
 
 <section class="sec sec-cream" id="cara">
   <div class="wrap">
     <div class="sec-head">
-      <h2 data-split>Kerja Jabatan Melalui LO dan Akaun Syarikat</h2>
+      <h2 data-split>Akaun Syarikat dan Kerja Jabatan Melalui MOF</h2>
     </div>
     <div class="ways">
-      <article class="way" data-reveal>
-        <p class="eyebrow">Jabatan kerajaan</p>
-        <h3>Kerja melalui LO</h3>
-        <ul class="checks">
-          <li>Terima Pesanan Tempatan (LO)</li>
-          <li>Sebut harga bertulis sebelum kerja dimulakan</li>
-          <li>Invois, delivery order dan resit untuk rekod jabatan</li>
-        </ul>
-        ${waBtn('Tanya kerja jabatan', 'btn btn-ink btn-sm', 'Salam M Automobile. Saya dari jabatan _____. Saya nak tanya tentang servis kenderaan jabatan melalui LO. Kenderaan _____.')}
-      </article>
       <article class="way" data-reveal>
         <p class="eyebrow">Syarikat dan armada</p>
         <h3>Akaun syarikat</h3>
@@ -378,11 +374,96 @@ ${phero({
         </ul>
         ${waBtn('Tanya akaun syarikat', 'btn btn-ink btn-sm', 'Salam M Automobile. Saya dari syarikat _____. Saya nak tanya tentang buka akaun untuk kenderaan syarikat. Bilangan dan jenis kenderaan _____.')}
       </article>
+      <article class="way" data-reveal>
+        <p class="eyebrow">Jabatan kerajaan</p>
+        <h3>Berdaftar MOF</h3>
+        <ul class="checks">
+          <li>Memiliki lesen ePerolehan untuk jabatan kerajaan</li>
+          <li>Berdaftar dengan Kementerian Kewangan, sah hingga ${site.mof.until}${site.mof.bumiputera ? '. Taraf Bumiputera' : ''}</li>
+          <li>Sebut harga, invois, delivery order dan resit untuk rekod jabatan</li>
+        </ul>
+        <div class="row">
+          ${waBtn('Tanya kerja jabatan', 'btn btn-ink btn-sm', 'Salam M Automobile. Saya dari jabatan _____. Saya nak tanya tentang servis kenderaan jabatan. Kenderaan _____.')}
+          ${pdfBtn('btn btn-line-dk btn-sm')}
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-${faqSection({ ids: ['agensi', 'dokumen-jabatan', 'armada', 'persendirian'], heading: 'Soalan Lazim Kerja Jabatan dan Syarikat', more: true, tone: '' })}
+${faqSection({ ids: clientFaq, heading: 'Soalan Lazim Akaun Syarikat dan Kerja Jabatan', more: true, tone: '' })}
+`,
+};
+
+/* ---------- /about/ ---------- */
+const a = site.about;
+const about = {
+  path: '/about/',
+  key: 'about',
+  name: 'Tentang Kami',
+  title: `Tentang ${site.name} | Bengkel di ${city}`,
+  description: `${site.name} (${site.reg}), bengkel kenderaan berat dan ringan di ${city}, ${state}. Berdaftar MOF. Visi, polisi kualiti, nilai dan profil syarikat (PDF).`,
+  ld: [faqLd(['mof', 'cat'])],
+  body: `
+${phero({
+  crumbs: [['Tentang Kami']],
+  h1: `Tentang ${site.short}`,
+  sub: a.intro,
+  cta: `${pdfBtn('btn btn-o')} ${waBtn('WhatsApp Bengkel', 'btn btn-line')}`,
+})}
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2 data-split>Maklumat Syarikat</h2>
+      </div>
+      <dl class="facts" data-reveal>
+        <div><dt>Nama syarikat</dt><dd>${site.name}</dd></div>
+        <div><dt>No. pendaftaran SSM</dt><dd>${site.reg}</dd></div>
+        <div><dt>Ditubuhkan</dt><dd>${site.regYear}</dd></div>
+        <div><dt>Pengarah Urusan</dt><dd>${site.director}</dd></div>
+        <div><dt>Kementerian Kewangan (MOF)</dt><dd>Berdaftar, memiliki lesen ePerolehan. Sah ${site.mof.since} hingga ${site.mof.until}</dd></div>
+        ${site.mof.bumiputera ? '<div><dt>Taraf</dt><dd>Syarikat Bumiputera</dd></div>' : ''}
+        <div><dt>Alamat</dt><dd>${addrLine()}</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-ink">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Visi korporat</p>
+        <p class="statement statement-dk" data-words>${a.vision}</p>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow">Polisi kualiti</p>
+        <ul class="worklist worklist-dk worklist-plain">${a.quality.map((w) => `<li>${w}</li>`).join('')}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-split>Nilai Kami</h2>
+    </div>
+    <ul class="values">${a.values.map(([t, d]) => `<li data-reveal><b>${t}</b><p>${d}</p></li>`).join('')}</ul>
+  </div>
+</section>
+
+<section class="sec sec-cream">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-split>Kenapa Pilih Kami</h2>
+    </div>
+    <ul class="values values-4">${a.why.map(([t, d]) => `<li data-reveal><b>${t}</b><p>${d}</p></li>`).join('')}</ul>
+    ${ctaBand('<b>Perlukan profil syarikat untuk sebut harga atau pendaftaran vendor?</b> Muat turun PDF atau minta di WhatsApp.', pdfBtn('btn btn-o btn-sm'))}
+  </div>
+</section>
 `,
 };
 
@@ -432,13 +513,13 @@ const faq = {
   key: 'faq',
   name: 'Soalan Lazim',
   title: `Soalan Lazim Bengkel Kenderaan ${city} | ${site.short}`,
-  description: `Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan dan kerja jabatan kerajaan di ${site.short}, ${city}.`,
+  description: `Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan, MOF dan kerja jabatan kerajaan di ${site.short}, ${city}.`,
   ld: [faqLd()],
   body: `
 ${phero({
   crumbs: [['Soalan Lazim']],
   h1: `Soalan Lazim Bengkel ${site.short}, ${city}`,
-  sub: 'Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan dan kerja jabatan kerajaan.',
+  sub: 'Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan, MOF dan kerja jabatan kerajaan.',
 })}
 ${faqSection({ search: true, heading: 'Kos, Slot dan Servis Kenderaan', h: 'h2' })}
 `,
@@ -486,11 +567,11 @@ const terms = legal({
   sections: [
     ['Maklumat am', 'Maklumat di laman ini adalah untuk rujukan umum tentang servis bengkel dan boleh berubah tanpa notis.'],
     ['Kos, tempoh dan slot', 'Laman ini tidak memaparkan harga atau tempoh kerja. Kos dan tempoh disahkan selepas pemeriksaan kenderaan. Slot bengkel tertakluk pada pengesahan bengkel.'],
-    ['Nama dan tanda dagang', 'Nama agensi dan syarikat yang disenaraikan sebagai pelanggan adalah milik pemilik masing-masing.'],
+    ['Nama dan tanda dagang', 'Nama dan logo syarikat yang dipaparkan sebagai pelanggan adalah tanda dagang milik pemilik masing-masing.'],
     ['Pautan pihak ketiga', 'Laman ini memaut ke WhatsApp, Google Maps dan Facebook. Kami tidak bertanggungjawab atas kandungan laman pihak ketiga.'],
     ['Had tanggungjawab', 'Kami tidak bertanggungjawab atas kerugian akibat penggunaan maklumat di laman ini.'],
     ['Undang-undang', 'Terma ini tertakluk pada undang-undang Malaysia.'],
   ],
 });
 
-export const pages = [home, services, catPage('heavy'), catPage('light'), clients, contact, faq, privacy, terms];
+export const pages = [home, services, catPage('heavy'), catPage('light'), about, clients, contact, faq, privacy, terms];

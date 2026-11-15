@@ -9,8 +9,9 @@
 - Facebook: https://www.facebook.com/p/M-Automobile-Service-Sdn-Bhd-61572429508459/
 - Email: mautomobile2u@gmail.com
 - Waktu operasi: Isnin 9.00 pagi – 6.00 petang; Selasa 9.00 pagi – 6.00 petang; Rabu 9.00 pagi – 6.00 petang; Khamis 9.00 pagi – 6.00 petang; Jumaat Tutup; Sabtu 9.00 pagi – 6.00 petang; Ahad 9.00 pagi – 6.00 petang
-- Pelanggan: PDRM, TUDM, AADK, APM, Majlis Daerah Machang, Jabatan Penjara, City-Link Express, J&T Express, XEND, Roti Sedap, Zafir Ais, Cendana Auto
-- Terima kerja jabatan kerajaan melalui Pesanan Tempatan (LO), dan akaun syarikat untuk armada.
+- Pelanggan syarikat: City-Link Express, J&T Express, XEND, Roti Sedap, Zafir Ais, Cendana Auto
+- Berdaftar dengan Kementerian Kewangan Malaysia (MOF), memiliki lesen ePerolehan untuk jabatan kerajaan (sah 05/06/2025 hingga 30/07/2028), syarikat Bumiputera. Akaun syarikat untuk armada.
+- Profil syarikat (PDF): https://m-automobile-mockup.mnifanmohdariff.workers.dev/files/profil-syarikat-m-automobile.pdf
 
 ## Kenderaan
 - Kenderaan Berat (atas 3 tan): Lori, Treler, Kenderaan komersial
@@ -24,14 +25,17 @@
 - Alignment & balancing: Tayar kenderaan berat dan ringan
 - Sistem penyejukan: Radiator, hos dan kipas
 - Elektrikal: Pendawaian, bateri dan lampu
+- Cat kenderaan: Touch-up hingga tukar warna penuh
+- Kerja badan (body work): Ketuk kemik, luruskan casis, tukar panel
 
 ## Halaman
-- [Servis](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/): Servis berkala, scan enjin, overhaul, brek, absorber, alignment dan elektrikal untuk lori, treler, kereta, van dan pikap di Machang, Kelantan.
+- [Servis](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/): Servis berkala, scan enjin, overhaul, brek, alignment, elektrikal, cat dan body work untuk lori, treler, kereta, van dan pikap di Machang, Kelantan.
 - [Kenderaan Berat](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/heavy-vehicles/): Lori, Treler, Kenderaan komersial (atas 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
 - [Kenderaan Ringan](https://m-automobile-mockup.mnifanmohdariff.workers.dev/services/light-vehicles/): Kereta, Van, Pikap (bawah 3 tan). Servis, scan enjin, overhaul, brek, absorber dan alignment di M Automobile, Machang, Kelantan.
-- [Pelanggan](https://m-automobile-mockup.mnifanmohdariff.workers.dev/clients/): Bengkel di Machang untuk kenderaan jabatan kerajaan dan syarikat. Terima LO, dengan sebut harga, invois, delivery order dan akaun syarikat.
+- [Tentang Kami](https://m-automobile-mockup.mnifanmohdariff.workers.dev/about/): M Automobile Service Sdn. Bhd. (202201015380 (1461077-M)), bengkel kenderaan berat dan ringan di Machang, Kelantan. Berdaftar MOF. Visi, polisi kualiti, nilai dan profil syarikat (PDF).
+- [Pelanggan](https://m-automobile-mockup.mnifanmohdariff.workers.dev/clients/): Bengkel di Machang untuk kenderaan syarikat dan jabatan kerajaan. Berdaftar MOF dengan lesen ePerolehan, akaun syarikat, sebut harga, invois dan delivery order.
 - [Lokasi](https://m-automobile-mockup.mnifanmohdariff.workers.dev/contact/): Bengkel M Automobile di Lot 1306, Kampung Kemuning, 18500 Machang, Kelantan. Telefon atau WhatsApp 013-207 8119. Peta dan arah ke bengkel.
-- [Soalan Lazim](https://m-automobile-mockup.mnifanmohdariff.workers.dev/faq/): Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan dan kerja jabatan kerajaan di M Automobile, Machang.
+- [Soalan Lazim](https://m-automobile-mockup.mnifanmohdariff.workers.dev/faq/): Jawapan tentang kos, sebut harga, slot bengkel, jenis kenderaan, MOF dan kerja jabatan kerajaan di M Automobile, Machang.
 
 ## Soalan lazim
 ### Berapa kos servis atau pembaikan?
@@ -64,8 +68,8 @@ Ada, untuk kenderaan berat dan ringan. Scan komputer dibuat untuk cari punca mas
 ### Boleh baiki enjin, sistem penyejukan dan elektrikal?
 Boleh. Kami buat overhaul enjin, pembaikan sistem penyejukan dan kerja elektrikal untuk kenderaan berat dan ringan.
 
-### Adakah bengkel menerima kerja jabatan dan agensi kerajaan?
-Ya, termasuk melalui Pesanan Tempatan (LO). Kami sediakan sebut harga, invois dan delivery order untuk rekod jabatan. Kerja jabatan dan syarikat
+### Adakah bengkel menerima kerja jabatan kerajaan?
+Ya. Kami berdaftar dengan Kementerian Kewangan Malaysia (MOF) dan memiliki lesen ePerolehan untuk perolehan jabatan kerajaan. Kami sediakan sebut harga, invois dan delivery order untuk rekod jabatan. Kerja jabatan dan syarikat
 
 ### Kenderaan berat jenis apa yang diterima?
 Lori, treler dan kenderaan komersial atas 3 tan. Hantar jenis, model dan saiz kenderaan (cth. 5 tan atau 10 tayar) di WhatsApp untuk semak sama ada kami boleh bantu.
@@ -74,7 +78,7 @@ Lori, treler dan kenderaan komersial atas 3 tan. Hantar jenis, model dan saiz ke
 Boleh. Scan komputer dan diagnosis enjin dibuat untuk lori, treler dan kenderaan komersial sebelum pembaikan dimulakan.
 
 ### Lori jabatan atau syarikat boleh dihantar ke bengkel ini?
-Boleh. Kami terima kerja jabatan kerajaan melalui Pesanan Tempatan (LO), dan syarikat boleh buka akaun untuk kenderaan armada. Kerja jabatan dan syarikat
+Boleh. Kami berdaftar MOF untuk kerja jabatan kerajaan melalui ePerolehan, dan syarikat boleh buka akaun untuk kenderaan armada. Kerja jabatan dan syarikat
 
 ### Kenderaan ringan jenis apa yang diterima?
 Kereta, van dan pikap bawah 3 tan. Hantar model dan tahun kenderaan serta masalahnya di WhatsApp untuk semak sama ada kami boleh bantu.
@@ -84,6 +88,12 @@ Ada. Selain servis berkala, kami buat baiki besar termasuk overhaul enjin, siste
 
 ### Dokumen apa yang disediakan untuk jabatan kerajaan?
 Sebut harga sebelum kerja dimulakan, kemudian invois, delivery order dan resit untuk rekod jabatan.
+
+### Adakah M Automobile berdaftar dengan MOF?
+Ya. M Automobile Service Sdn. Bhd. berdaftar dengan Kementerian Kewangan Malaysia sejak 5 Jun 2025, sah hingga 30 Julai 2028, dan diiktiraf sebagai syarikat Bumiputera. Sijil MOF disertakan dalam profil syarikat (PDF).
+
+### Ada buat kerja cat dan body work?
+Ada. Kami buat cat kenderaan dari touch-up kecil hingga tukar warna penuh, dan kerja badan seperti ketuk kemik, luruskan casis dan tukar panel.
 
 ### Adakah bengkel ini menerima pemilik persendirian?
 Ya. Selain jabatan kerajaan dan syarikat, kami terima kenderaan pemilik persendirian.

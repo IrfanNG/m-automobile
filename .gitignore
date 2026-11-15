@@ -2,3 +2,5 @@ node_modules
 .wrangler
 .DS_Store
 originals/
+# Original company profile with unredacted IC numbers; the public copy is public/files/
+PROFILE SYARIKAT*.pdf

@@ -58,8 +58,9 @@ writeFileSync(join(out, 'llms.txt'), `# ${site.name}
 - Telefon: ${site.phones[1].display}
 - Google Maps: ${site.maps}
 - Facebook: ${site.facebook}
-${site.email ? `- Email: ${site.email}\n` : ''}${site.hours ? `- Waktu operasi: ${site.hours.map((h) => `${h.day} ${fmtHours(h)}`).join('; ')}\n` : ''}- Pelanggan: ${[...site.clients.gov, ...site.clients.biz].map((c) => strip(c.name)).join(', ')}
-- Terima kerja jabatan kerajaan melalui Pesanan Tempatan (LO), dan akaun syarikat untuk armada.
+${site.email ? `- Email: ${site.email}\n` : ''}${site.hours ? `- Waktu operasi: ${site.hours.map((h) => `${h.day} ${fmtHours(h)}`).join('; ')}\n` : ''}- Pelanggan syarikat: ${site.clients.map((c) => strip(c.name)).join(', ')}
+- Berdaftar dengan Kementerian Kewangan Malaysia (MOF), memiliki lesen ePerolehan untuk jabatan kerajaan (sah ${site.mof.since} hingga ${site.mof.until})${site.mof.bumiputera ? ', syarikat Bumiputera' : ''}. Akaun syarikat untuk armada.
+- Profil syarikat (PDF): ${link(site.profilePdf.href)}
 
 ## Kenderaan
 ${Object.values(site.categories).map((c) => `- ${c.name} (${c.tonnage.toLowerCase()}): ${c.types.join(', ')}`).join('\n')}

@@ -72,6 +72,38 @@ export const site = {
   ],
   landmark: null,
 
+  // Sijil Akuan Pendaftaran Syarikat, Kementerian Kewangan Malaysia (from the company profile PDF).
+  mof: { since: '05/06/2025', until: '30/07/2028', bumiputera: true },
+  // Company profile for download: all 54 pages of the original PDF, with IC numbers, the secretary's
+  // personal phone, email and address, and the director's date of birth blacked out. The unredacted original is not published.
+  profilePdf: { href: '/files/profil-syarikat-m-automobile.pdf', size: '10.6 MB' },
+  director: 'Mohd Hilman bin Mohd Zulkipli',
+  about: {
+    intro: 'M Automobile Service Sdn. Bhd. ditubuhkan pada tahun 2022 di Machang, Kelantan. Kami menyelenggara dan membaiki kenderaan berat dan ringan untuk sektor kerajaan dan komersial, dengan pengalaman lebih 9 tahun dalam bidang ini.',
+    vision: 'Kami mengutamakan perancangan yang konsisten, kualiti, kepantasan dan keselamatan untuk memenuhi keperluan pelanggan. Kami berusaha memberi servis yang berkualiti dan konsisten, boleh dipercayai, fleksibel mengikut jadual kerja, dan menyiapkan setiap tugasan dalam tempoh yang ditetapkan.',
+    quality: [
+      'Membina hubungan jangka panjang dengan pelanggan dengan memahami keperluan mereka',
+      'Menepati komitmen kualiti, kos dan jadual',
+      'Mengamalkan pencegahan risiko dan pengurusan risiko yang boleh dipercayai',
+      'Penambahbaikan berterusan berdasarkan proses kerja yang cekap dan maklum balas pelanggan',
+      'Membangunkan kemahiran dan tanggungjawab kakitangan melalui latihan',
+    ],
+    values: [
+      ['Jujur dalam tanggungjawab', 'Berkhidmat dengan jujur, ikhlas dan amanah tanpa mengambil kesempatan untuk kepentingan peribadi.'],
+      ['Patuh peraturan dan undang-undang', 'Rasuah adalah kesalahan besar dari segi undang-undang dan agama. Kami tidak bertolak ansur dengannya.'],
+      ['Hormat individu dan masyarakat', 'Saling menghormati dalam masyarakat berbilang kaum dan agama.'],
+      ['Kualiti, kemahiran dan standard', 'Kerja dibuat oleh tenaga mahir, mengikut spesifikasi dan standard yang ditetapkan oleh pelanggan.'],
+      ['Keselamatan dan kesihatan', 'Persekitaran kerja yang selamat dan sihat untuk pekerja dan orang awam.'],
+      ['Penjagaan alam sekitar', 'Menjaga kebersihan dan keselamatan supaya alam sekitar terpelihara daripada pencemaran.'],
+    ],
+    why: [
+      ['Juruteknik berpengalaman', 'Pengalaman dengan kenderaan semua saiz, dari kereta hingga lori dan bas.'],
+      ['Peralatan diagnosis', 'Scan komputer dan peralatan bengkel untuk cari punca masalah dengan tepat.'],
+      ['Alat ganti berkualiti', 'Alat ganti tulen dan bahan berkualiti untuk kerja yang tahan lama.'],
+      ['Harga berpatutan', 'Sebut harga bertulis sebelum kerja dimulakan, tanpa menjejaskan kualiti.'],
+    ],
+  },
+
   img: {
     // Malaysian photos (Pexels, Ipoh, Perak); see process-photos.py for sources and processing.
     hero: localPic('pexels-37154110', [640, 960, 1280, 1600, 1920], 0, 74, 1),
@@ -104,6 +136,7 @@ export const site = {
         'Scan komputer dan diagnosis enjin',
         'Overhaul enjin, sistem penyejukan dan elektrikal',
         'Brek, absorber, alignment dan balancing tayar',
+        'Cat dan kerja badan (body work)',
       ],
       send: [
         'Jenis kenderaan, model dan tahun',
@@ -128,6 +161,7 @@ export const site = {
         'Scan komputer dan diagnosis enjin',
         'Overhaul enjin, sistem penyejukan dan elektrikal',
         'Brek, absorber, alignment dan balancing tayar',
+        'Cat dan kerja badan (body work)',
       ],
       send: [
         'Model dan tahun kenderaan',
@@ -149,26 +183,20 @@ export const site = {
     { t: 'Alignment &amp; balancing', d: 'Tayar kenderaan berat dan ringan', alts: ['Rim dan tayar kenderaan', 'Tayar kereta dari dekat', 'Tayar pada kereta', 'Roda kenderaan dari dekat'], imgs: [thumb('photo-1444947295498-07f60c19a4ff'), thumb('photo-1656232976683-7b688560e427'), thumb('photo-1637087867437-5a1898610adf'), thumb('photo-1682189165011-d4305d2b0ced')] },
     { t: 'Sistem penyejukan', d: 'Radiator, hos dan kipas', alts: ['Enjin kereta dengan hos dan komponen mekanikal', 'Enjin kereta dengan pelbagai komponen', 'Enjin kereta', 'Ruang enjin kereta'], imgs: [thumb('photo-1779263569870-e7a0fbc25686'), thumb('photo-1781454278699-684ec678944d'), thumb('photo-1666148647370-8730124d1376'), thumb('photo-1695159861109-4dd63fa83d0a')] },
     { t: 'Elektrikal', d: 'Pendawaian, bateri dan lampu', alts: ['Bateri kereta dengan wayar bersambung', 'Bateri dengan playar', 'Bateri di atas meja', 'Bateri dan pengecas di atas bangku kerja'], imgs: [thumb('photo-1765211003026-f7666ea3a948'), thumb('photo-1676337167752-2062c6ca7366'), thumb('photo-1676337167629-d896b3ed5724'), thumb('photo-1676337167498-ceac1d6dafba')] },
+    { t: 'Cat kenderaan', d: 'Touch-up hingga tukar warna penuh', alts: ['Kereta ditutup plastik di dalam bilik cat', 'Pekerja menutup kereta dengan plastik sebelum dicat', 'Kereta ditutup pita pelekat sebelum dicat', 'Panel kereta yang baru dicat'], imgs: [thumb('photo-1512080482556-ea648017576c'), thumb('photo-1676035291793-645c307e5a4e'), thumb('photo-1632605185825-fd583793fa73'), thumb('photo-1610092708835-af669294f3f3')] },
+    { t: 'Kerja badan (body work)', d: 'Ketuk kemik, luruskan casis, tukar panel', alts: ['Pekerja melelas panel belakang kereta di bengkel', 'Pekerja melelas badan kereta kelabu', 'Pekerja membaiki panel kereta di bengkel', 'Kereta rosak di bahagian depan sedang dibaiki di bengkel'], imgs: [thumb('photo-1786489785858-b64715400a37'), thumb('photo-1786489785506-9c527aaf908d'), thumb('photo-1786489785813-8057d678d91e'), thumb('photo-1767681092416-bccf9410bda4')] },
   ],
 
-  clients: {
-    gov: [
-      { name: 'PDRM', sub: 'Kontinjen Kelantan' },
-      { name: 'TUDM', sub: 'Pangkalan Udara Gong Kedak' },
-      { name: 'AADK', sub: 'Agensi Antidadah Kebangsaan' },
-      { name: 'APM', sub: 'Angkatan Pertahanan Awam' },
-      { name: 'Majlis Daerah Machang' },
-      { name: 'Jabatan Penjara', sub: 'Pusat Pemulihan Akhlak Machang' },
-    ],
-    biz: [
-      { name: 'City-Link Express', mono: true },
-      { name: 'J&amp;T Express' },
-      { name: 'XEND', mono: true },
-      { name: 'Roti Sedap' },
-      { name: 'Zafir Ais', mono: true },
-      { name: 'Cendana Auto' },
-    ],
-  },
+  // Private-sector customers only. logo: official file in public/assets/clients/ (w x h is the file size);
+  // no logo published online -> styled wordmark (font: sans | serif | mono, color).
+  clients: [
+    { name: 'City-Link Express', logo: { src: '/assets/clients/city-link.webp', w: 310, h: 112 } },
+    { name: 'J&amp;T Express', logo: { src: '/assets/clients/jnt.webp', w: 375, h: 80 } },
+    { name: 'XEND', logo: { src: '/assets/clients/xendnow.webp', w: 377, h: 96 } },
+    { name: 'Roti Sedap', font: 'serif', color: '#9A4A14' },
+    { name: 'Zafir Ais', font: 'sans', color: '#0B6FA4' },
+    { name: 'Cendana Auto', font: 'mono', color: '#1F5130' },
+  ],
 
   // a: answer HTML. Links use site paths.
   faq: [
@@ -182,16 +210,18 @@ export const site = {
     { id: 'kenderaan', q: 'Kenderaan apa yang dibaiki di bengkel ini?', a: '<b>Kenderaan berat (atas 3 tan):</b> lori, treler dan kenderaan komersial. <b>Kenderaan ringan (bawah 3 tan):</b> kereta, van dan pikap.' },
     { id: 'scan', q: 'Ada scan komputer dan diagnosis enjin?', a: 'Ada, untuk kenderaan berat dan ringan. Scan komputer dibuat untuk cari punca masalah enjin sebelum pembaikan.' },
     { id: 'enjin', q: 'Boleh baiki enjin, sistem penyejukan dan elektrikal?', a: 'Boleh. Kami buat overhaul enjin, pembaikan sistem penyejukan dan kerja elektrikal untuk kenderaan berat dan ringan.' },
-    { id: 'agensi', q: 'Adakah bengkel menerima kerja jabatan dan agensi kerajaan?', a: 'Ya, termasuk melalui Pesanan Tempatan (LO). Kami sediakan sebut harga, invois dan delivery order untuk rekod jabatan. <a class="link" href="/clients/">Kerja jabatan dan syarikat</a>' },
+    { id: 'agensi', q: 'Adakah bengkel menerima kerja jabatan kerajaan?', a: 'Ya. Kami berdaftar dengan Kementerian Kewangan Malaysia (MOF) dan memiliki lesen ePerolehan untuk perolehan jabatan kerajaan. Kami sediakan sebut harga, invois dan delivery order untuk rekod jabatan. <a class="link" href="/clients/">Kerja jabatan dan syarikat</a>' },
     // Heavy vehicles page
     { id: 'berat-jenis', q: 'Kenderaan berat jenis apa yang diterima?', a: 'Lori, treler dan kenderaan komersial atas 3 tan. Hantar jenis, model dan saiz kenderaan (cth. 5 tan atau 10 tayar) di WhatsApp untuk semak sama ada kami boleh bantu.' },
     { id: 'berat-scan', q: 'Boleh scan dan diagnosis enjin lori?', a: 'Boleh. Scan komputer dan diagnosis enjin dibuat untuk lori, treler dan kenderaan komersial sebelum pembaikan dimulakan.' },
-    { id: 'berat-jabatan', q: 'Lori jabatan atau syarikat boleh dihantar ke bengkel ini?', a: 'Boleh. Kami terima kerja jabatan kerajaan melalui Pesanan Tempatan (LO), dan syarikat boleh buka akaun untuk kenderaan armada. <a class="link" href="/clients/">Kerja jabatan dan syarikat</a>' },
+    { id: 'berat-jabatan', q: 'Lori jabatan atau syarikat boleh dihantar ke bengkel ini?', a: 'Boleh. Kami berdaftar MOF untuk kerja jabatan kerajaan melalui ePerolehan, dan syarikat boleh buka akaun untuk kenderaan armada. <a class="link" href="/clients/">Kerja jabatan dan syarikat</a>' },
     // Light vehicles page
     { id: 'ringan-jenis', q: 'Kenderaan ringan jenis apa yang diterima?', a: 'Kereta, van dan pikap bawah 3 tan. Hantar model dan tahun kenderaan serta masalahnya di WhatsApp untuk semak sama ada kami boleh bantu.' },
     { id: 'ringan-baiki-besar', q: 'Ada buat baiki besar untuk kereta, van dan pikap?', a: 'Ada. Selain servis berkala, kami buat baiki besar termasuk overhaul enjin, sistem penyejukan dan kerja elektrikal.' },
     // Clients page
     { id: 'dokumen-jabatan', q: 'Dokumen apa yang disediakan untuk jabatan kerajaan?', a: 'Sebut harga sebelum kerja dimulakan, kemudian invois, delivery order dan resit untuk rekod jabatan.' },
+    { id: 'mof', q: 'Adakah M Automobile berdaftar dengan MOF?', a: 'Ya. M Automobile Service Sdn. Bhd. berdaftar dengan Kementerian Kewangan Malaysia sejak 5 Jun 2025, sah hingga 30 Julai 2028, dan diiktiraf sebagai syarikat Bumiputera. Sijil MOF disertakan dalam <a class="link" href="/files/profil-syarikat-m-automobile.pdf" download>profil syarikat (PDF)</a>.' },
+    { id: 'cat', q: 'Ada buat kerja cat dan body work?', a: 'Ada. Kami buat cat kenderaan dari touch-up kecil hingga tukar warna penuh, dan kerja badan seperti ketuk kemik, luruskan casis dan tukar panel.' },
     { id: 'persendirian', q: 'Adakah bengkel ini menerima pemilik persendirian?', a: 'Ya. Selain jabatan kerajaan dan syarikat, kami terima kenderaan pemilik persendirian.' },
     // Contact page
     { id: 'telefon', q: 'Berapa nombor telefon bengkel?', a: '013-207 8119 untuk telefon dan WhatsApp, atau 017-946 8119 untuk telefon.' },

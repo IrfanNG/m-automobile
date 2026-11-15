@@ -364,8 +364,38 @@ html:not(.motion) .mq-dup { display: none; }
 .curtain-on [data-hero] { animation-duration: .9s; animation-delay: .6s; }
 .curtain-on .hero-media img, .curtain-on .phero-media img { animation: settle 2s var(--ease) backwards; animation-delay: .45s; }
 
+/* ============ Client logos, company profile ============ */
+.mq-logo { min-width: 220px; align-items: center; }
+.mq-logo img, .logos img { height: 44px; width: auto; max-width: 170px; object-fit: contain; }
+.wm { font-size: 26px; line-height: 1.05; letter-spacing: -.02em; font-weight: 800; white-space: nowrap; }
+.wm-serif { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; letter-spacing: 0; }
+.wm-sans { text-transform: uppercase; letter-spacing: .06em; font-size: 23px; }
+.wm-mono { font: 700 21px var(--mono); letter-spacing: -.01em; }
+.logos { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.logos li { display: grid; place-items: center; min-height: 160px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.logos img { height: 56px; max-width: 220px; }
+.btn small { font: 400 11px var(--mono); opacity: .75; letter-spacing: .02em; }
+.about-row { margin-top: 36px; gap: 24px; }
+.lede + .row { margin-top: 28px; }
+.facts { margin: 0; border-top: 1px solid var(--line); }
+.facts > div { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font: 700 11.5px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; }
+.statement-dk { font-size: clamp(22px, 2.3vw, 32px); max-width: none; margin-top: 18px; }
+.values { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 4vw, 48px) clamp(16px, 2vw, 28px); }
+.values-4 { grid-template-columns: repeat(4, 1fr); margin-bottom: clamp(40px, 5vw, 64px); }
+.values li { border-top: 2px solid var(--ink); padding-top: 18px; display: grid; gap: 8px; align-content: start; }
+.worklist-plain li { grid-template-columns: 1fr; }
+.values b { font-size: clamp(19px, 1.6vw, 22px); letter-spacing: -.02em; line-height: 1.2; }
+.values p { color: var(--text-2); font-size: 15px; }
+
 /* ============ Responsive ============ */
+@media (max-width: 1160px) and (min-width: 761px) {
+  .nav { gap: 18px; font-size: 14px; }
+  .nav .btn { padding-inline: 18px; }
+}
 @media (max-width: 1000px) {
+  .values, .values-4, .logos { grid-template-columns: 1fr 1fr; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stats li:nth-child(2) { border-right: 0; }
   .stats li:nth-child(n+3) { margin-top: 28px; border-top: 1px solid var(--line); }
@@ -404,6 +434,13 @@ html:not(.motion) .mq-dup { display: none; }
   .job-imgs img { width: calc((100% - 18px) / 4); height: 64px; }
   .mq-i { min-height: 84px; padding: 14px 24px; }
   .mq-i b { font-size: 20px; }
+  .mq-logo { min-width: 170px; }
+  .mq-logo img { height: 34px; max-width: 130px; }
+  .wm { font-size: 20px; }
+  .logos li { min-height: 120px; padding: 18px; }
+  .logos img { height: 40px; max-width: 140px; }
+  .values { grid-template-columns: 1fr; }
+  .facts > div { grid-template-columns: 1fr; gap: 4px; }
   .step { padding: 22px 18px; }
   .bubble { margin-left: 6%; }
   .faq .ans p { padding-right: 0; }
