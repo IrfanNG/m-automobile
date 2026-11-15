@@ -54,8 +54,7 @@ writeFileSync(join(out, 'llms.txt'), `# ${site.name}
 > Bengkel kenderaan berat dan ringan di ${site.address.city}, ${site.address.state}, Malaysia. Servis dan pembaikan lori, treler, kenderaan komersial, kereta, van dan pikap. Berdaftar sejak ${site.regYear} (${site.reg}).
 
 - Alamat: ${addrLine()}
-- Telefon dan WhatsApp: ${site.phones[0].display}
-- Telefon: ${site.phones[1].display}
+${site.phones.map((p) => `- ${strip(p.label)}: ${p.display}`).join('\n')}
 - Google Maps: ${site.maps}
 - Facebook: ${site.facebook}
 ${site.email ? `- Email: ${site.email}\n` : ''}${site.hours ? `- Waktu operasi: ${site.hours.map((h) => `${h.day} ${fmtHours(h)}`).join('; ')}\n` : ''}- Pelanggan syarikat: ${site.clients.map((c) => strip(c.name)).join(', ')}

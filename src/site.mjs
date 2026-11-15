@@ -41,10 +41,9 @@ export const site = {
     state: 'Kelantan',
   },
   phones: [
-    { label: 'Telefon &amp; WhatsApp', display: '017-946 8119', tel: '+60179468119' },
-    { label: 'Telefon', display: '013-207 8119', tel: '+60132078119' },
+    { label: 'Telefon &amp; WhatsApp', display: '013-207 8119', tel: '+60132078119' },
   ],
-  wa: 'https://wa.me/60179468119',
+  wa: 'https://wa.me/60132078119',
   waDefault: 'Salam M Automobile. Saya nak bertanya tentang servis kenderaan.',
   // Google Business Profile share link (opens Google Maps on phones)
   maps: 'https://share.google/wVdMZot1FgRkjnZRT',
@@ -224,7 +223,7 @@ export const site = {
     { id: 'cat', q: 'Ada buat kerja cat dan body work?', a: 'Ada. Kami buat cat kenderaan dari touch-up kecil hingga tukar warna penuh, dan kerja badan seperti ketuk kemik, luruskan casis dan tukar panel.' },
     { id: 'persendirian', q: 'Adakah bengkel ini menerima pemilik persendirian?', a: 'Ya. Selain jabatan kerajaan dan syarikat, kami terima kenderaan pemilik persendirian.' },
     // Contact page
-    { id: 'telefon', q: 'Berapa nombor telefon bengkel?', a: '017-946 8119 untuk telefon dan WhatsApp, atau 013-207 8119 untuk telefon.' },
+    { id: 'telefon', q: 'Berapa nombor telefon bengkel?', a: '013-207 8119 untuk telefon dan WhatsApp.' },
     { id: 'waktu', q: 'Bila waktu operasi bengkel?', a: 'Sabtu hingga Khamis, 9.00 pagi hingga 6.00 petang. Jumaat tutup.' },
     { id: 'arah', q: 'Bagaimana nak dapatkan arah ke bengkel?', a: 'Tekan butang Buka Google Maps di halaman Lokasi untuk arah ke Lot 1306, Kampung Kemuning, 18500 Machang, Kelantan. Anda juga boleh salin alamat atau telefon kami.' },
     { id: 'armada', q: 'Boleh uruskan kenderaan syarikat atau armada?', a: 'Boleh. Syarikat boleh buka akaun dengan kami. Setiap kenderaan direkodkan ikut nombor plat, dengan sejarah servis dan invois di bawah satu akaun.' },

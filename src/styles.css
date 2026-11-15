@@ -228,7 +228,7 @@ html:not(.motion) .mq-dup { display: none; }
 .addr-big { font-size: clamp(26px, 2.6vw, 34px); font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin: 4px 0; }
 .addr-sm { color: var(--text-2); margin-bottom: 18px; }
 .hours-na { font-size: 17px; font-weight: 600; }
-.phones { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.phones { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
 .phone-card b { display: block; font: 700 clamp(20px, 2vw, 26px) var(--mono); letter-spacing: -.02em; margin-bottom: 14px; }
 .phone-card .go { font-size: 14px; font-weight: 600; color: var(--orange-dk); }
 .phone-card { transition: background .3s, transform .4s var(--ease); }
