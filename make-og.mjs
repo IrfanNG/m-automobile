@@ -28,7 +28,7 @@ body { position: relative; overflow: hidden; background: #131417; color: #fff; f
 .in { position: absolute; inset: 64px 72px; display: flex; flex-direction: column; }
 .brand { display: flex; align-items: center; gap: 18px; }
 .logo { width: 76px; height: 76px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
-.logo img { width: 62px; }
+.logo img { width: 100%; height: 100%; border-radius: 50%; }
 .brand b { font-size: 28px; font-weight: 700; letter-spacing: -.01em; }
 .brand small { display: block; font: 700 15px M, monospace; letter-spacing: .08em; opacity: .7; margin-top: 4px; }
 h1 { margin-top: auto; font-size: 88px; line-height: .92; font-weight: 800; letter-spacing: -.045em; }

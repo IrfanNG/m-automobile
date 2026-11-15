@@ -152,7 +152,9 @@ ${site.url ? `<link rel="canonical" href="${site.url}${path}">
 <script>
 (function(){var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('motion');try{if(sessionStorage.getItem('mt')){d.classList.add('curtain-on');sessionStorage.removeItem('mt')}}catch(e){}})();
 </script>
-<link rel="icon" href="/assets/logo.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/HankenGrotesk-400-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/SpaceMono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/SpaceMono-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -160,13 +162,13 @@ ${preload ? `<link rel="preload" as="image" href="${preload}" imagesrcset="${pre
 ${[business, ...ld].map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n')}
 </head>
 <body data-page="${key}">
-<div class="curtain" aria-hidden="true"><span class="curtain-mark"><span class="brand-logo"><img src="/assets/logo.png" width="60" height="57" alt=""></span><span class="curtain-txt">M Automobile</span></span></div>
+<div class="curtain" aria-hidden="true"><span class="curtain-mark"><span class="brand-logo"><img src="/assets/logo.png" width="76" height="76" alt=""></span><span class="curtain-txt">M Automobile</span></span></div>
 <a class="skip" href="#main">Langkau ke kandungan</a>
 
 <header class="hdr" id="top">
   <div class="hdr-in wrap">
     <a href="/" class="brand" aria-label="${site.brand}, laman utama">
-      <span class="brand-logo"><img src="/assets/logo.png" width="44" height="42" alt="Logo ${site.brand}"></span>
+      <span class="brand-logo"><img src="/assets/logo.png" width="48" height="48" alt="Logo ${site.brand}"></span>
       <span class="brand-txt"><b>${site.brand}</b></span>
     </a>
     <nav class="nav" id="nav" aria-label="Utama">
@@ -186,7 +188,7 @@ ${body}
     <p class="ftr-big" aria-hidden="true"><span>Singgoh la demo.</span></p>
     <div class="ftr-cols">
       <div class="ftr-brand">
-        <span class="brand-logo"><img src="/assets/logo.png" width="44" height="42" alt="Logo ${site.brand}"></span>
+        <span class="brand-logo"><img src="/assets/logo.png" width="48" height="48" alt="Logo ${site.brand}"></span>
         <p><b>${site.name}</b></p>
         <p>Bengkel kenderaan berat dan ringan di ${site.address.city}, ${site.address.state}.</p>
         <p>${addrLine()}</p>
