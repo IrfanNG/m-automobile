@@ -99,7 +99,7 @@ dan kemas kini rujukan; jika tidak, pelawat lama akan terus nampak fail lama.
 ### Gambar stok
 Gambar Unsplash disenaraikan melalui `pic()`/`thumb()` dalam `src/site.mjs`; jalankan
 `node fetch-assets.mjs` untuk muat turun yang baru. Gambar Pexels (hero, kategori) diproses oleh
-`process-photos.py` dari `originals/` (kedua-duanya tidak dalam git).
+`process-photos.py` dari `originals/` (folder `originals/` tidak dalam git).
 
 ---
 
