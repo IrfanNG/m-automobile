@@ -3,6 +3,7 @@ import { site, addrLine, fmtTime, fmtHours } from './site.mjs';
 const NAV = [
   { href: '/services/', label: 'Servis', key: 'services' },
   { href: '/about/', label: 'Tentang Kami', key: 'about' },
+  { href: '/galeri/', label: 'Galeri', key: 'galeri' },
   { href: '/clients/', label: 'Pelanggan', key: 'clients' },
   { href: '/contact/', label: 'Lokasi', key: 'contact' },
   { href: '/faq/', label: 'Soalan Lazim', key: 'faq' },
@@ -191,7 +192,7 @@ ${body}
         <p>${addrLine()}</p>
       </div>
       <nav aria-label="Servis"><p class="eyebrow">Servis</p><a href="/services/">Semua servis</a><a href="/services/heavy-vehicles/">Kenderaan Berat</a><a href="/services/light-vehicles/">Kenderaan Ringan</a><a href="/#slot">Semak Slot Bengkel</a></nav>
-      <nav aria-label="Bengkel"><p class="eyebrow">Bengkel</p><a href="/about/">Tentang Kami</a><a href="/contact/">Lokasi</a><a href="/clients/">Pelanggan</a><a href="/faq/">Soalan Lazim</a><a href="${site.profilePdf.href}" download>Profil Syarikat (PDF)</a></nav>
+      <nav aria-label="Bengkel"><p class="eyebrow">Bengkel</p><a href="/about/">Tentang Kami</a><a href="/galeri/">Galeri</a><a href="/contact/">Lokasi</a><a href="/clients/">Pelanggan</a><a href="/faq/">Soalan Lazim</a><a href="${site.profilePdf.href}" download>Profil Syarikat (PDF)</a></nav>
       <div><p class="eyebrow">Hubungi</p>${site.phones.map((p) => `<a href="tel:${p.tel}">${p.display}</a>`).join('')}${waBtn('WhatsApp Bengkel', '')}${site.email ? `<a href="mailto:${site.email}">${site.email}</a>` : ''}<a href="${site.facebook}" target="_blank" rel="noopener">Facebook</a></div>
     </div>
     <div class="ftr-bot">

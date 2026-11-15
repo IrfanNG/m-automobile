@@ -2,7 +2,7 @@
    SplitText, Lenis) load on the visitor's first interaction, so the first screen never waits for them.
    Every feature checks its elements exist. */
 (() => {
-  const WA = 'https://wa.me/60132078119';
+  const WA = 'https://wa.me/60179468119';
   const root = document.documentElement;
   const motionPref = root.classList.contains('motion'); // set in <head> unless reduced motion
   let motionOK = false; // true once GSAP is loaded
@@ -253,6 +253,120 @@
       maps.forEach(m => mio.observe(m));
     };
     MAP_EVENTS.forEach(ev => addEventListener(ev, arm, { passive: true }));
+  }
+
+  /* ---------- Galeri: filter by agency, tiles rise in, lightbox ---------- */
+  const gal = $('#gal');
+  if (gal) {
+    const items = $$('.gal-i', gal);
+    const btns = $$('.gal-f');
+    const fullName = Object.fromEntries(btns.map(b => [b.dataset.f, b.title]));
+    const titleEl = $('[data-gal-title]'), nEl = $('[data-gal-n]');
+    gal.classList.add('gal-js');
+
+    // Rise-in: each batch that enters the screen together is staggered
+    const io = new IntersectionObserver(entries => {
+      let k = 0;
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        en.target.style.setProperty('--d', `${Math.min(k++, 6) * 0.07}s`);
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -6% 0px' });
+    items.forEach(li => io.observe(li));
+
+    const visible = () => items.filter(li => !li.classList.contains('off'));
+
+    // Masonry: place each photo in the shortest column, so the grid reads left to right.
+    // (Without JS the CSS multi-column layout is used.)
+    let nCols = 0;
+    const colCount = () => innerWidth <= 760 ? 2 : innerWidth <= 1100 ? 3 : 4;
+    const layout = (force) => {
+      const n = colCount();
+      if (n === nCols && !force) return;
+      nCols = n;
+      const cols = Array.from({ length: n }, () => { const c = document.createElement('div'); c.className = 'gal-col'; return c; });
+      const h = new Array(n).fill(0);
+      items.forEach(li => {
+        if (li.classList.contains('off')) { cols[0].appendChild(li); return; }
+        const a = $('.gal-a', li), k = h.indexOf(Math.min(...h));
+        cols[k].appendChild(li);
+        h[k] += a.dataset.h / a.dataset.w + 0.04;
+      });
+      gal.replaceChildren(...cols);
+      gal.classList.add('gal-m');
+    };
+    addEventListener('resize', () => layout(false));
+    const setFilter = (key, scroll) => {
+      if (!fullName[key] && key !== 'all') key = 'all';
+      btns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.f === key)));
+      // Phones: the filter bar scrolls sideways; bring the chosen chip into view
+      const bar = $('.gal-bar'), on = btns.find(b => b.dataset.f === key);
+      if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: on.offsetLeft - (bar.clientWidth - on.offsetWidth) / 2, behavior: scroll ? 'smooth' : 'auto' });
+      items.forEach(li => {
+        const on = key === 'all' || li.dataset.album === key;
+        li.classList.toggle('off', !on);
+        li.classList.remove('in');
+        io.unobserve(li);
+      });
+      titleEl.textContent = key === 'all' ? 'Semua gambar' : fullName[key];
+      nEl.textContent = `· ${visible().length} gambar`;
+      layout(true);
+      const url = new URL(location.href);
+      if (key === 'all') url.searchParams.delete('a'); else url.searchParams.set('a', key);
+      history.replaceState(null, '', url);
+      if (scroll && $('.gal-now').getBoundingClientRect().top < 0) scrollToEl($('.gal-now'));
+      requestAnimationFrame(() => { visible().forEach(li => io.observe(li)); if (motionOK) ScrollTrigger.refresh(); });
+    };
+    btns.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.f, true)));
+    setFilter(new URLSearchParams(location.search).get('a') || 'all', false);
+
+    // Lightbox
+    const lb = $('.lb'), lbImg = $('[data-lb-img]', lb), lbFig = $('.lb-fig', lb);
+    let list = [], cur = 0, opener = null;
+    const show = (i, dir = 1) => {
+      cur = (i + list.length) % list.length;
+      const a = list[cur], im = $('img', a), album = a.parentElement.dataset.album;
+      lbImg.style.setProperty('--dir', dir);
+      lbImg.classList.add('swap');
+      lbImg.onload = () => requestAnimationFrame(() => lbImg.classList.remove('swap'));
+      lbImg.src = a.dataset.big; lbImg.alt = im.alt;
+      lbImg.width = a.dataset.w; lbImg.height = a.dataset.h;
+      if (lbImg.complete) lbImg.onload();
+      $('[data-lb-n]', lb).innerHTML = `<b>${String(cur + 1).padStart(2, '0')}</b> / ${String(list.length).padStart(2, '0')}`;
+      $('[data-lb-album]', lb).textContent = fullName[album] || '';
+      $('[data-lb-cap]', lb).textContent = im.alt;
+      [1, -1].forEach(d => { const n = list[(cur + d + list.length) % list.length]; if (n) new Image().src = n.dataset.big; });
+    };
+    gal.addEventListener('click', e => {
+      const a = e.target.closest('.gal-a');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0 || !lb.showModal) return;
+      e.preventDefault();
+      list = visible().map(li => $('.gal-a', li));
+      opener = a;
+      show(list.indexOf(a));
+      lb.showModal();
+      if (lenis) lenis.stop();
+    });
+    lb.addEventListener('close', () => { if (lenis) lenis.start(); if (opener) opener.focus({ preventScroll: true }); });
+    $$('[data-lb-step]', lb).forEach(b => b.addEventListener('click', () => show(cur + +b.dataset.lbStep, +b.dataset.lbStep)));
+    $('[data-lb-close]', lb).addEventListener('click', () => lb.close());
+    lb.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') show(cur + 1, 1);
+      if (e.key === 'ArrowLeft') show(cur - 1, -1);
+    });
+    // Click on the dark area (not the photo or a control) closes
+    let swiped = false;
+    lb.addEventListener('click', e => { if (!swiped && (e.target === lb || e.target === lbFig)) lb.close(); swiped = false; });
+    // Swipe left/right on phones
+    let x0 = null;
+    lbFig.addEventListener('pointerdown', e => { x0 = e.clientX; });
+    lbFig.addEventListener('pointerup', e => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) { swiped = true; show(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); }
+    });
   }
 
   /* ---------- Phone dock ---------- */

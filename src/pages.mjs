@@ -1,5 +1,6 @@
 import { site, addrLine } from './site.mjs';
 import { waBtn, phero, catCards, faqList, faqLd, addressCard, hoursCard, phoneCards, ctaBand } from './layout.mjs';
+import { albums, photos, count } from './gallery.mjs';
 
 const { city, state } = site.address;
 const tel = site.phones[0];
@@ -128,7 +129,7 @@ const home = {
   key: 'home',
   name: 'Laman utama',
   title: `Bengkel Lori &amp; Kereta di ${city}, ${state} | ${site.short}`,
-  description: `Bengkel kenderaan berat dan ringan di ${city}, ${state}. Servis dan pembaikan lori, treler, kenderaan komersial, kereta, van dan pikap. WhatsApp 013-207 8119.`,
+  description: `Bengkel kenderaan berat dan ringan di ${city}, ${state}. Servis dan pembaikan lori, treler, kenderaan komersial, kereta, van dan pikap. WhatsApp 017-946 8119.`,
   preload: site.img.hero,
   ld: [faqLd(['kos', 'sebut-harga', 'slot', 'gambar'])],
   body: `
@@ -467,6 +468,66 @@ ${phero({
 `,
 };
 
+/* ---------- /galeri/ ---------- */
+const galeri = {
+  path: '/galeri/',
+  key: 'galeri',
+  name: 'Galeri',
+  title: `Galeri Kerja Bengkel di ${city}, ${state} | ${site.short}`,
+  description: `${photos.length} gambar sebenar dari bengkel ${site.short} di ${city}: kenderaan TUDM, ATM, APM, Penjara, PDRM, majlis daerah dan syarikat swasta yang kami servis dan baiki.`,
+  body: `
+${phero({
+  crumbs: [['Galeri']],
+  h1: 'Kerja sebenar, dari bengkel kami.',
+  sub: `Lori tentera, bas jabatan, jentera majlis daerah dan armada syarikat. Semua gambar diambil di bengkel kami di ${city} dan di lokasi pelanggan.`,
+  cta: `<a class="btn btn-o" href="#galeri">Lihat ${photos.length} gambar</a> ${waBtn('WhatsApp Bengkel', 'btn btn-line')}`,
+})}
+
+<section class="sec sec-cream gal-sec" id="galeri">
+  <div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <p class="eyebrow eyebrow-solo"><b>Galeri</b></p>
+        <h2 data-split>Dari pangkalan udara hingga majlis daerah.</h2>
+      </div>
+      <p class="lede" data-reveal>Tapis ikut agensi. Klik gambar untuk paparan penuh, guna anak panah atau leret untuk gambar seterusnya.</p>
+    </div>
+
+    <div class="gal-bar" role="toolbar" aria-label="Tapis gambar ikut agensi">
+      <button type="button" class="gal-f" data-f="all" aria-pressed="true">Semua <sup>${photos.length}</sup></button>
+      ${albums.map((a) => `<button type="button" class="gal-f" data-f="${a.key}" aria-pressed="false" title="${a.full}">${a.label} <sup>${count(a.key)}</sup></button>`).join('\n      ')}
+    </div>
+    <p class="gal-now" aria-live="polite"><span data-gal-title>Semua gambar</span> <span class="muted" data-gal-n></span></p>
+
+    <ul class="gal" id="gal">
+      ${photos.map((p, i) => `<li class="gal-i" data-album="${p.album}">
+        <a href="${p.big}" class="gal-a" data-i="${i}" data-big="${p.big}" data-w="${p.w}" data-h="${p.h}" style="--c:${p.color};aspect-ratio:${p.w}/${p.h}">
+          <img src="${p.src}" srcset="${p.srcset}" sizes="(max-width: 760px) 50vw, (max-width: 1100px) 33vw, 320px" width="${p.w}" height="${p.h}" alt="${p.caption}" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async">
+          <span class="gal-tag">${albums.find((a) => a.key === p.album).label}</span>
+          <span class="gal-cap">${p.caption}</span>
+        </a>
+      </li>`).join('\n      ')}
+    </ul>
+    <div class="gal-cta">${ctaBand('<b>Kenderaan jabatan atau armada syarikat?</b> Hantar gambar kerosakan di WhatsApp, kami semak dan beri sebut harga.', waBtn('WhatsApp Bengkel', 'btn btn-o btn-sm', 'Salam M Automobile. Saya nak minta sebut harga untuk kenderaan jabatan/syarikat.'))}</div>
+  </div>
+</section>
+
+<dialog class="lb" aria-label="Paparan gambar">
+  <div class="lb-top">
+    <span class="lb-n" data-lb-n></span>
+    <button type="button" class="lb-x" data-lb-close aria-label="Tutup">Tutup <span aria-hidden="true">✕</span></button>
+  </div>
+  <figure class="lb-fig">
+    <img data-lb-img alt="">
+    <figcaption><b data-lb-album></b><span data-lb-cap></span></figcaption>
+  </figure>
+  <button type="button" class="lb-nav lb-prev" data-lb-step="-1" aria-label="Gambar sebelum"><span aria-hidden="true">←</span></button>
+  <button type="button" class="lb-nav lb-next" data-lb-step="1" aria-label="Gambar seterusnya"><span aria-hidden="true">→</span></button>
+</dialog>
+
+`,
+};
+
 /* ---------- /contact/ ---------- */
 const contact = {
   path: '/contact/',
@@ -574,4 +635,4 @@ const terms = legal({
   ],
 });
 
-export const pages = [home, services, catPage('heavy'), catPage('light'), about, clients, contact, faq, privacy, terms];
+export const pages = [home, services, catPage('heavy'), catPage('light'), about, galeri, clients, contact, faq, privacy, terms];
