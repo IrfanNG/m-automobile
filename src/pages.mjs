@@ -128,7 +128,7 @@ const home = {
   key: 'home',
   name: 'Laman utama',
   title: `Bengkel Lori &amp; Kereta di ${city}, ${state} | ${site.short}`,
-  description: `Bengkel kenderaan berat dan ringan di ${city}, ${state}. Servis dan pembaikan lori, treler, kenderaan komersial, kereta, van dan pikap. WhatsApp 013-207 8119.`,
+  description: `Bengkel kenderaan berat dan ringan di ${city}, ${state}. Servis dan pembaikan lori, treler, kenderaan komersial, kereta, van dan pikap. WhatsApp 017-946 8119.`,
   preload: site.img.hero,
   ld: [faqLd(['kos', 'sebut-harga', 'slot', 'gambar'])],
   body: `

@@ -2,7 +2,7 @@
    SplitText, Lenis) load on the visitor's first interaction, so the first screen never waits for them.
    Every feature checks its elements exist. */
 (() => {
-  const WA = 'https://wa.me/60132078119';
+  const WA = 'https://wa.me/60179468119';
   const root = document.documentElement;
   const motionPref = root.classList.contains('motion'); // set in <head> unless reduced motion
   let motionOK = false; // true once GSAP is loaded
