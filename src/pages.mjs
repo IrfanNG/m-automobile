@@ -78,7 +78,7 @@ const slotBuilder = () => `
       <div class="phone-wrap" data-reveal>
         <div class="phone">
           <div class="chat-head">
-            <span class="av"><img src="/assets/logo.png" width="40" height="40" alt=""></span>
+            <span class="av"><img src="/assets/logo-round.png" width="40" height="40" alt=""></span>
             <span><b>${site.brand}</b><small>${tel.display}</small></span>
           </div>
           <div class="chat-body">

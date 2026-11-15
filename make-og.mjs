@@ -41,7 +41,7 @@ h1 em { font-style: normal; color: #E85D1B; }
 </style></head><body>
 <div class="bg"></div>
 <div class="in">
-  <div class="brand"><span class="logo"><img src="${pub('assets/logo.png')}"></span><span><b>${site.brand}</b><small>SDN. BHD.</small></span></div>
+  <div class="brand"><span class="logo"><img src="${pub('assets/logo-round.png')}"></span><span><b>${site.brand}</b><small>SDN. BHD.</small></span></div>
   <h1>Bengkel Kenderaan<br>Berat <em>&amp;</em> Ringan</h1>
   <p class="place">di ${site.address.city}, ${site.address.state}.</p>
   <div class="foot"><span class="pill wa">WhatsApp ${site.phones[0].display}</span>${hoursLine ? `<span class="pill hrs">${hoursLine}</span>` : ''}</div>
